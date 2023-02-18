@@ -1,0 +1,23 @@
+<h1>Show Arable land</h1>
+
+<ul>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @arable_land.number %>
+  </li>
+
+  <li>
+    <strong>Size:</strong>
+    <%= @arable_land.size %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @arable_land.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.arable_land_path(@conn, :edit, @arable_land) %></span> |
+<span><%= link "Back", to: Routes.arable_land_path(@conn, :index) %></span>

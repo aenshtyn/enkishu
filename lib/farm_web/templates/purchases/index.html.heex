@@ -1,0 +1,40 @@
+<h1>Listing Procurements</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Day</th>
+            <th>Vendor name</th>
+            <th>Unit</th>
+            <th>Quantity</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for procurements <- @procurements do %>
+            <tr>
+                <td>
+                    <%= procurements.day %>
+                </td>
+                <td>
+                    <%= procurements.vendor_name %>
+                </td>
+                <td>
+                    <%= procurements.unit %>
+                </td>
+                <td>
+                    <%= procurements.quantity %>
+                </td>
+
+                <td>
+                    <span><%= link "Show", to: Routes.procurements_path(@conn, :show, procurements) %></span>
+                    <span><%= link "Edit", to: Routes.procurements_path(@conn, :edit, procurements) %></span>
+                    <span><%= link "Delete", to: Routes.procurements_path(@conn, :delete, procurements), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New Procurements", to: Routes.procurements_path(@conn, :new) %></span>

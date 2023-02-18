@@ -1,0 +1,5 @@
+<h1>Edit Role</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.api_role_path(@conn, :update, @role)) %>
+
+<span><%= link "Back", to: Routes.api_role_path(@conn, :index) %></span>

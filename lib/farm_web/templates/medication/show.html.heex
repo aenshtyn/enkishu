@@ -1,0 +1,23 @@
+<h1>Show Medication</h1>
+
+<ul>
+
+  <li>
+    <strong>Brand:</strong>
+    <%= @medication.brand %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @medication.type %>
+  </li>
+
+  <li>
+    <strong>Patient:</strong>
+    <%= @medication.patient %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.medication_path(@conn, :edit, @medication) %></span> |
+<span><%= link "Back", to: Routes.medication_path(@conn, :index) %></span>

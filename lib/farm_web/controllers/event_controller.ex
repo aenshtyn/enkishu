@@ -1,0 +1,66 @@
+defmodule FarmWeb.EventController do
+  use FarmWeb, :controller
+
+  alias Farm.Events
+  alias Farm.Events.Event
+  alias Farm.Animals.Cow
+  import Ecto.Query
+
+  def index(conn, cow) do
+    events = Events.list_events(cow)
+    render(conn, "index.html", events: events, cow: cow)
+  end
+
+  def new(conn, _params) do
+    changeset = Events.change_event(%Event{})
+    cow_query = from(c in Cow, select: {c.name, c.id})
+    all_cows = Farm.Repo.all(cow_query)
+    render(conn, "new.html", changeset: changeset, all_cows: all_cows)
+  end
+
+  def create(conn, %{"event" => event_params}) do
+    case Events.create_event(event_params) do
+      {:ok, event} ->
+        conn
+        |> put_flash(:info, "Event created successfully.")
+        |> redirect(to: Routes.event_path(conn, :show, event))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def show(conn, %{"id" => id}) do
+    event = Events.get_event!(id)
+    render(conn, "show.html", event: event)
+  end
+
+  def edit(conn, %{"id" => id}) do
+    event = Events.get_event!(id)
+    changeset = Events.change_event(event)
+    render(conn, "edit.html", event: event, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "event" => event_params}) do
+    event = Events.get_event!(id)
+
+    case Events.update_event(event, event_params) do
+      {:ok, event} ->
+        conn
+        |> put_flash(:info, "Event updated successfully.")
+        |> redirect(to: Routes.event_path(conn, :show, event))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "edit.html", event: event, changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    event = Events.get_event!(id)
+    {:ok, _event} = Events.delete_event(event)
+
+    conn
+    |> put_flash(:info, "Event deleted successfully.")
+    |> redirect(to: Routes.event_path(conn, :index))
+  end
+end

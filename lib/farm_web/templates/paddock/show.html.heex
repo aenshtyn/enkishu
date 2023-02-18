@@ -1,0 +1,23 @@
+<h1>Show Paddock</h1>
+
+<ul>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @paddock.number %>
+  </li>
+
+  <li>
+    <strong>Size:</strong>
+    <%= @paddock.size %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @paddock.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.paddock_path(@conn, :edit, @paddock) %></span> |
+<span><%= link "Back", to: Routes.paddock_path(@conn, :index) %></span>

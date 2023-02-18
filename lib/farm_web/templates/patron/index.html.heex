@@ -1,0 +1,40 @@
+<h1>Listing Patrons</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for patron <- @patrons do %>
+            <tr>
+                <td>
+                    <%= patron.name %>
+                </td>
+                <td>
+                    <%= patron.phone_number %>
+                </td>
+                <td>
+                    <%= patron.address %>
+                </td>
+                <td>
+                    <%= patron.role_id %>
+                </td>
+
+
+                <td>
+                    <span><%= link "Show", to: Routes.patron_path(@conn, :show, patron) %></span>
+                    <span><%= link "Edit", to: Routes.patron_path(@conn, :edit, patron) %></span>
+                    <span><%= link "Delete", to: Routes.patron_path(@conn, :delete, patron), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New Patron", to: Routes.patron_path(@conn, :new) %></span>

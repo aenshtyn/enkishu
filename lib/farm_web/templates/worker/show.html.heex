@@ -1,0 +1,37 @@
+<h1>Show Worker</h1>
+
+<ul>
+
+    <li>
+        <strong>Dob:</strong>
+        <%= @worker.dob %>
+    </li>
+
+    <li>
+        <strong>Name:</strong>
+        <%= @worker.name %>
+    </li>
+
+    <li>
+        <strong>Phone number:</strong>
+        <%= @worker.phone_number %>
+    </li>
+
+    <li>
+        <strong>Report date:</strong>
+        <%= @worker.report_date %>
+    </li>
+
+    <li>
+        <strong>Address:</strong>
+        <%= @worker.address %>
+    </li>
+    <li>
+        <strong>Role:</strong>
+        <%= @worker.role_id %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.worker_path(@conn, :edit, @worker) %></span> |
+<span><%= link "Back", to: Routes.worker_path(@conn, :index) %></span>

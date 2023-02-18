@@ -1,0 +1,18 @@
+<h1>Show Salary</h1>
+
+<ul>
+
+  <li>
+    <strong>Grade:</strong>
+    <%= @salary.grade %>
+  </li>
+
+  <li>
+    <strong>Amount:</strong>
+    <%= @salary.amount %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.salary_path(@conn, :edit, @salary) %></span> |
+<span><%= link "Back", to: Routes.salary_path(@conn, :index) %></span>

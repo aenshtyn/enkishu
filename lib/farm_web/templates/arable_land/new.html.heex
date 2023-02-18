@@ -1,0 +1,5 @@
+<h1>New Arable land</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.arable_land_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.arable_land_path(@conn, :index) %></span>

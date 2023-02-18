@@ -1,0 +1,5 @@
+<h1>Edit Procurements</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.procurements_path(@conn, :update, @procurements)) %>
+
+    <span><%= link "Back", to: Routes.procurements_path(@conn, :index) %></span>

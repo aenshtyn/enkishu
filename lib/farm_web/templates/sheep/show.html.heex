@@ -1,0 +1,18 @@
+<h1>Show Sheep</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @sheep.name %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @sheep.age %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.sheep_path(@conn, :edit, @sheep) %></span> |
+<span><%= link "Back", to: Routes.sheep_path(@conn, :index) %></span>

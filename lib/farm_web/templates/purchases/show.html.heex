@@ -1,0 +1,28 @@
+<h1>Show Procurements</h1>
+
+<ul>
+
+    <li>
+        <strong>Day:</strong>
+        <%= @procurements.day %>
+    </li>
+
+    <li>
+        <strong>Vendor name:</strong>
+        <%= @procurements.vendor_name %>
+    </li>
+
+    <li>
+        <strong>Unit:</strong>
+        <%= @procurements.unit %>
+    </li>
+
+    <li>
+        <strong>Quantity:</strong>
+        <%= @procurements.quantity %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.procurements_path(@conn, :edit, @procurements) %></span> |
+<span><%= link "Back", to: Routes.procurements_path(@conn, :index) %></span>

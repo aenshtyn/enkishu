@@ -1,0 +1,28 @@
+<h1>Show Patron</h1>
+
+<ul>
+
+    <li>
+        <strong>Name:</strong>
+        <%= @patron.name %>
+    </li>
+
+    <li>
+        <strong>Phone number:</strong>
+        <%= @patron.phone_number %>
+    </li>
+
+    <li>
+        <strong>Address:</strong>
+        <%= @patron.address %>
+    </li>
+
+    <li>
+        <strong>Role:</strong>
+        <%= @patron.role_id %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.patron_path(@conn, :edit, @patron) %></span> |
+<span><%= link "Back", to: Routes.patron_path(@conn, :index) %></span>

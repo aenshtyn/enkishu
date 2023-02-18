@@ -1,0 +1,28 @@
+<h1>Show Cow</h1>
+
+<ul>
+
+    <li>
+        <strong>Name:</strong>
+        <%= @cow.name %>
+    </li>
+
+    <li>
+        <strong>Dob:</strong>
+        <%= @cow.dob %>
+    </li>
+
+    <li>
+        <strong>Breed:</strong>
+        <%= @cow.breed %>
+    </li>
+
+    <li>
+        <strong>Owner:</strong>
+        <%= @cow.patron_id %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.cow_path(@conn, :edit, @cow) %></span> |
+<span><%= link "Back", to: Routes.cow_path(@conn, :index) %></span>

@@ -1,0 +1,40 @@
+<h1>Listing Milks</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Day</th>
+            <th>Volume</th>
+            <th>Milking time</th>
+            <th>Cow Name</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for milk <- @milks do %>
+            <tr>
+                <td>
+                    <%= milk.day %>
+                </td>
+                <td>
+                    <%= milk.volume %>
+                </td>
+                <td>
+                    <%= milk.milking_time %>
+                </td>
+                <td>
+                    <%= milk.cow_id %>
+                </td>
+
+                <td>
+                    <span><%= link "Show", to: Routes.milk_path(@conn, :show, milk) %></span>
+                    <span><%= link "Edit", to: Routes.milk_path(@conn, :edit, milk) %></span>
+                    <span><%= link "Delete", to: Routes.milk_path(@conn, :delete, milk), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New Milk", to: Routes.milk_path(@conn, :new) %></span>

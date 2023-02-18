@@ -1,0 +1,33 @@
+<h1>Show Sales</h1>
+
+<ul>
+
+  <li>
+    <strong>Day:</strong>
+    <%= @sales.day %>
+  </li>
+
+  <li>
+    <strong>Customer name:</strong>
+    <%= @sales.customer_name %>
+  </li>
+
+  <li>
+    <strong>Unit:</strong>
+    <%= @sales.unit %>
+  </li>
+
+  <li>
+    <strong>Quantity:</strong>
+    <%= @sales.quantity %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @sales.price %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.sales_path(@conn, :edit, @sales) %></span> |
+<span><%= link "Back", to: Routes.sales_path(@conn, :index) %></span>

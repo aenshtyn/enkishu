@@ -1,0 +1,5 @@
+<h1>Edit Milk</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.milk_path(@conn, :update, @milk)) %>
+
+<span><%= link "Back", to: Routes.milk_path(@conn, :index) %></span>

@@ -1,0 +1,28 @@
+<h1>Show Milk</h1>
+
+<ul>
+
+    <li>
+        <strong>Day:</strong>
+        <%= @milk.day %>
+    </li>
+
+    <li>
+        <strong>Volume:</strong>
+        <%= @milk.volume %>
+    </li>
+
+    <li>
+        <strong>Milking time:</strong>
+        <%= @milk.milking_time %>
+    </li>
+
+    <li>
+        <strong>Cow:</strong>
+        <%= @milk.cow_id %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.milk_path(@conn, :edit, @milk) %></span> |
+<span><%= link "Back", to: Routes.milk_path(@conn, :index) %></span>

@@ -1,0 +1,40 @@
+<h1>Listing Cows</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Breed</th>
+            <th>Owner</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for cow <- @cows do %>
+            <tr>
+                <td>
+                    <%= cow.name %>
+                </td>
+                <td>
+                    <%= cow.dob %>
+                </td>
+                <td>
+                    <%= cow.breed %>
+                </td>
+                <td>
+                    <%= cow.patron_id %>
+                </td>
+
+                <td>
+                    <span><%= link "Show", to: Routes.cow_path(@conn, :show, cow) %></span>
+                    <span><%= link "Edit", to: Routes.cow_path(@conn, :edit, cow) %></span>
+                    <span><%= link "Delete", to: Routes.cow_path(@conn, :delete, cow), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New Cow", to: Routes.cow_path(@conn, :new) %></span>

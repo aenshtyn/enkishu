@@ -1,0 +1,30 @@
+<h1>Listing Duties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for duty <- @duties do %>
+    <tr>
+      <td><%= duty.day %></td>
+      <td><%= duty.name %></td>
+      <td><%= duty.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.duty_path(@conn, :show, duty) %></span>
+        <span><%= link "Edit", to: Routes.duty_path(@conn, :edit, duty) %></span>
+        <span><%= link "Delete", to: Routes.duty_path(@conn, :delete, duty), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Duty", to: Routes.duty_path(@conn, :new) %></span>

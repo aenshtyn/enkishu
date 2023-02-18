@@ -1,0 +1,23 @@
+<h1>Show Duty</h1>
+
+<ul>
+
+  <li>
+    <strong>Day:</strong>
+    <%= @duty.day %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @duty.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @duty.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.duty_path(@conn, :edit, @duty) %></span> |
+<span><%= link "Back", to: Routes.duty_path(@conn, :index) %></span>

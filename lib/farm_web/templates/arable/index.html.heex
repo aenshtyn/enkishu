@@ -1,0 +1,30 @@
+<h1>Listing Arable</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Size</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for arable <- @arable do %>
+    <tr>
+      <td><%= arable.number %></td>
+      <td><%= arable.size %></td>
+      <td><%= arable.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.arable_path(@conn, :show, arable) %></span>
+        <span><%= link "Edit", to: Routes.arable_path(@conn, :edit, arable) %></span>
+        <span><%= link "Delete", to: Routes.arable_path(@conn, :delete, arable), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Arable", to: Routes.arable_path(@conn, :new) %></span>

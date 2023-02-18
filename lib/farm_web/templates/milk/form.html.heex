@@ -1,0 +1,28 @@
+<.form let={f} for={@changeset} action={@action}>
+    <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+            <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+        <% end %>
+
+            <%= label f, :day %>
+                <%= date_select f, :day %>
+                    <%= error_tag f, :day %>
+
+                        <%= label f, :volume %>
+                            <%= number_input f, :volume, step: "any" %>
+                                <%= error_tag f, :volume %>
+
+                                    <%= label f, :milking_time %>
+                                        <%= select f, :milking_time, ["Morning": "AM", "Evening": "PM"] %>
+                                            <%= error_tag f, :milking_time %>
+
+                                                <%= label f, :cow %>
+                                                    <%= select(f, :cow_id, @all_cows) %>
+                                                        <%= error_tag f, :cow_id %>
+
+
+                                                            <div>
+                                                                <%= submit "Save" %>
+                                                            </div>
+</.form>

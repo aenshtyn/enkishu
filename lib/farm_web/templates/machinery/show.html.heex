@@ -1,0 +1,33 @@
+<h1>Show Machinery</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @machinery.name %>
+  </li>
+
+  <li>
+    <strong>Brand:</strong>
+    <%= @machinery.brand %>
+  </li>
+
+  <li>
+    <strong>Hp:</strong>
+    <%= @machinery.hp %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @machinery.price %>
+  </li>
+
+  <li>
+    <strong>Area of use:</strong>
+    <%= @machinery.area_of_use %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.machinery_path(@conn, :edit, @machinery) %></span> |
+<span><%= link "Back", to: Routes.machinery_path(@conn, :index) %></span>

@@ -1,0 +1,5 @@
+<h1>Edit Sheep</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.sheep_path(@conn, :update, @sheep)) %>
+
+<span><%= link "Back", to: Routes.sheep_path(@conn, :index) %></span>

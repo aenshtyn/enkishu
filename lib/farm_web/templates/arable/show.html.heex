@@ -1,0 +1,23 @@
+<h1>Show Arable</h1>
+
+<ul>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @arable.number %>
+  </li>
+
+  <li>
+    <strong>Size:</strong>
+    <%= @arable.size %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @arable.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.arable_path(@conn, :edit, @arable) %></span> |
+<span><%= link "Back", to: Routes.arable_path(@conn, :index) %></span>

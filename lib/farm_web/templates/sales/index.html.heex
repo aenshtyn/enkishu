@@ -1,0 +1,34 @@
+<h1>Listing Sales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Customer name</th>
+      <th>Unit</th>
+      <th>Quantity</th>
+      <th>Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for sales <- @sales do %>
+    <tr>
+      <td><%= sales.day %></td>
+      <td><%= sales.customer_name %></td>
+      <td><%= sales.unit %></td>
+      <td><%= sales.quantity %></td>
+      <td><%= sales.price %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.sales_path(@conn, :show, sales) %></span>
+        <span><%= link "Edit", to: Routes.sales_path(@conn, :edit, sales) %></span>
+        <span><%= link "Delete", to: Routes.sales_path(@conn, :delete, sales), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Sales", to: Routes.sales_path(@conn, :new) %></span>

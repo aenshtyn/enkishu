@@ -1,0 +1,5 @@
+<h1>Edit Duty</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.duty_path(@conn, :update, @duty)) %>
+
+<span><%= link "Back", to: Routes.duty_path(@conn, :index) %></span>
