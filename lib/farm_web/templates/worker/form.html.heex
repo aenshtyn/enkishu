@@ -4,32 +4,46 @@
             <p>Oops, something went wrong! Please check the errors below.</p>
         </div>
         <% end %>
+            <div class="mb-3">
+                <%= label f, :name %>
+                    <%= text_input f, :name %>
+                        <%= error_tag f, :name %>
+            </div>
+            <div class="mb-3">
+                <%= label f, :name %>
+                    <%= text_input f, :name %>
+                        <%= error_tag f, :name %>
+            </div>
+            <div class="mb-3">
+                <%= label f, :dob %>
+                    <%= datetime_select f, :dob %>
+                        <%= error_tag f, :dob %>
+            </div>
 
-            <%= label f, :dob %>
-                <%= datetime_select f, :dob %>
-                    <%= error_tag f, :dob %>
+            <div class="mb-3">
+                <%= label f, :phone_number %>
+                    <%= number_input f, :phone_number %>
+                        <%= error_tag f, :phone_number %>
+            </div>
+            <div class="mb-3">
+                <%= label f, :report_date %>
+                    <%= datetime_select f, :report_date %>
+                        <%= error_tag f, :report_date %>
+            </div>
+            <div class="mb-3">
+                <%= label f, :address %>
+                    <%= text_input f, :address %>
+                        <%= error_tag f, :address %>
+            </div>
+            <div class="mb-3">
+                <%= label f, :role %>
+                    <%= select(f, :role_id, @all_roles) %>
+                        <%= error_tag f, :role_id %>
+            </div>
 
-                        <%= label f, :name %>
-                            <%= text_input f, :name %>
-                                <%= error_tag f, :name %>
 
-                                    <%= label f, :phone_number %>
-                                        <%= number_input f, :phone_number %>
-                                            <%= error_tag f, :phone_number %>
+            <div class="mb-3">
+                <%= submit "Save", phx_disable_with: "Saving...", class: "btn btn-primary" %>
 
-                                                <%= label f, :report_date %>
-                                                    <%= datetime_select f, :report_date %>
-                                                        <%= error_tag f, :report_date %>
-
-                                                            <%= label f, :address %>
-                                                                <%= text_input f, :address %>
-                                                                    <%= error_tag f, :address %>
-
-                                                                        <%= label f, :role %>
-                                                                            <%= select(f, :role_id, @all_roles) %>
-                                                                                <%= error_tag f, :role_id %>
-
-                                                                                    <div>
-                                                                                        <%= submit "Save" %>
-                                                                                    </div>
+            </div>
 </.form>

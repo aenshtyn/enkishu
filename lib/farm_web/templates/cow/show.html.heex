@@ -11,6 +11,10 @@
         <strong>Dob:</strong>
         <%= @cow.dob %>
     </li>
+    <li>
+        <strong>Age:</strong>
+        <%= @cow.age %> months
+    </li>
 
     <li>
         <strong>Breed:</strong>
@@ -22,11 +26,20 @@
         <%= @cow.patron.name %>
     </li>
     <li>
-        <strong>Milk:</strong>
-        <%= @cow.patron.name %>
+        <%= for milk <- @cow.milks do %>
+            <strong>Milk:</strong>
+            <ul>
+                <li>volume</li>
+                <%= milk.volume %>
+                    <li>milking time</li>
+                    <%= milk.milking_time %>
+                        <li>date</li>
+                        <%= milk.day %>
+            </ul>
+            <% end %>
     </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.cow_path(@conn, :edit, @cow) %></span> |
+<span><%= link "Edit", to: Routes.cow_path(@conn, :edit, @cow) %></span>
 <span><%= link "Back", to: Routes.cow_path(@conn, :index) %></span>

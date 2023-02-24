@@ -11,7 +11,7 @@ defmodule FarmWeb.PatronController do
     preloads = [:role, :cows]
     patrons = HR.list_patrons(preloads: preloads)
     render(conn, "index.html", patrons: patrons)
-    
+
   end
 
   def new(conn, _params) do
@@ -35,10 +35,14 @@ defmodule FarmWeb.PatronController do
 
   def show(conn, %{"id" => id}) do
     patron = HR.get_patron!(id)
-    role_query = from(r in Role, select: {r.name, r.id})
-    all_roles = Farm.Repo.all(role_query)
-    render(conn, "show.html", patron: patron, all_roles: all_roles)
+    render(conn, "show.html", patron: patron)
   end
+  # def show(conn, %{"id" => id}) do
+  #   patron = HR.get_patron!(id)
+  #   role_query = from(r in Role, select: {r.name, r.id})
+  #   all_roles = Farm.Repo.all(role_query)
+  #   render(conn, "show.html", patron: patron, all_roles: all_roles)
+  # end
 
   # def show_patrons_details(opts \\ []) do
   #   roles =

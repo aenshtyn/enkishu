@@ -21,6 +21,17 @@
         <strong>Role:</strong>
         <%= @patron.role.name %>
     </li>
+    <li>
+
+        <strong>Cows:</strong>
+        <%= for cow <- @patron.cows do %>
+            <ol>
+                <span>
+   
+                        <%= link cow.name, to: Routes.cow_path(@conn, :show, cow) %></span> |
+            </ol>
+            <% end %>
+    </li>
 
 </ul>
 

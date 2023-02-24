@@ -56,6 +56,13 @@ config :farm, FarmWeb.AuthAccessPipeline,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :dart_sass,
+  version: "1.54.5",
+  default: [
+    args: ~w(css/app.scss ../priv/static/assets/app.css),
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 config :arc,
   storage: Arc.Storage.Local
 

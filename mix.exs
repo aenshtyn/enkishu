@@ -42,7 +42,7 @@ defmodule Farm.MixProject do
       {:phoenix_live_view, "~> 0.17.5"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.6"},
-      {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
+      # {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
@@ -53,7 +53,8 @@ defmodule Farm.MixProject do
       {:guardian, "~> 2.0"},
       {:bcrypt_elixir, "~> 3.0"},
       {:contex, "~> 0.4.0"},
-      {:arc_ecto, "~> 0.11.3"}
+      {:arc_ecto, "~> 0.11.3"},
+      {:dart_sass, "~> 0.5", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -69,7 +70,7 @@ defmodule Farm.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "sass default --no-source-map --style=compressed","phx.digest"]
     ]
   end
 end

@@ -138,7 +138,8 @@ defmodule Farm.HR do
       ** (Ecto.NoResultsError)
 
   """
-  def get_patron!(role_id), do: Repo.get!(Patron, role_id)
+  # def get_patron!(role_id), do: Repo.get!(Patron, role_id)
+  def get_patron!(id), do: Repo.get!(Patron, id) |> Repo.preload([:cows, :role])
 
   @doc """
   Creates a patron.
