@@ -25,12 +25,13 @@ config :farm, FarmWeb.Endpoint,
   secret_key_base: "XJu3E0qF2iHm7GqChNIBUgU+nUKzMMoZdcJGRWQYkfd6cxzBEmnIdNQ75AsrIpEM",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    # esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     sass: {
       DartSass,
       :install_and_run,
       [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
     }
+
   ]
 
 # ## SSL Support
@@ -80,4 +81,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-

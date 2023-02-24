@@ -18,6 +18,39 @@ defmodule FarmWeb.Router do
   end
 
   scope "/", FarmWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+
+    get "/users/register", UserRegistrationController, :new
+    post "/users/register", UserRegistrationController, :create
+    get "/users/log_in", UserSessionController, :new
+    post "/users/log_in", UserSessionController, :create
+    get "/users/reset_password", UserResetPasswordController, :new
+    post "/users/reset_password", UserResetPasswordController, :create
+    get "/users/reset_password/:token", UserResetPasswordController, :edit
+    put "/users/reset_password/:token", UserResetPasswordController, :update
+  end
+
+  scope "/", FarmWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/users/settings", UserSettingsController, :edit
+    put "/users/settings", UserSettingsController, :update
+    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+
+    resources "/cows", CowController
+  end
+
+  scope "/", FarmWeb do
+    pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
+    get "/users/confirm", UserConfirmationController, :new
+    post "/users/confirm", UserConfirmationController, :create
+    get "/users/confirm/:token", UserConfirmationController, :edit
+    post "/users/confirm/:token", UserConfirmationController, :update
+  end
+
+  scope "/", FarmWeb do
     pipe_through :browser
 
     get "/", PageController, :index
@@ -63,44 +96,44 @@ defmodule FarmWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", FarmWeb.Api, as: :api do
-    pipe_through :api
+  # scope "/api", FarmWeb.Api, as: :api do
+  #   pipe_through :api
 
-    #Products
-    resources "/calfs", CalfController
-    resources "/milks", MilkController
-    resources "/cows", CowController
-    get "/cows/total", CowController, :total_number
-    resources "/donkeys", DonkeyController
-    resources "/events", EventController
+  #   #Products
+  #   resources "/calfs", CalfController
+  #   resources "/milks", MilkController
+  #   # resources "/cows", CowController
+  #   get "/cows/total", CowController, :total_number
+  #   resources "/donkeys", DonkeyController
+  #   resources "/events", EventController
 
-    #Inventory
-    resources "/machinerys", MachineryController
-    resources "/medications", MedicationController
+  #   #Inventory
+  #   resources "/machinerys", MachineryController
+  #   resources "/medications", MedicationController
 
-    # HR
-    resources "/workers", WorkerController
-    resources "/duties", DutyController
-    resources "/roles", RoleController
-    resources "/patrons", PatronController
+  #   # HR
+  #   resources "/workers", WorkerController
+  #   resources "/duties", DutyController
+  #   resources "/roles", RoleController
+  #   resources "/patrons", PatronController
 
-    # Land
-    resources "/arable", ArableController
-    resources "/paddocks", PaddockController
+  #   # Land
+  #   resources "/arable", ArableController
+  #   resources "/paddocks", PaddockController
 
-    # Products
-    resources "/products", ProductController
+  #   # Products
+  #   resources "/products", ProductController
 
-    # Finance
-    resources "/sales", SalesController
-    resources "/procurements", ProcurementsController
-    resources "/salarys", SalaryController
+  #   # Finance
+  #   resources "/sales", SalesController
+  #   resources "/procurements", ProcurementsController
+  #   resources "/salarys", SalaryController
 
-    # Accounts
-    post "/register", UserRegistrationController, :register
-    post "/sign_in", SessionController, :create
-    post "/sign_out", SessionController, :delete
-  end
+  #   # Accounts
+  #   post "/register", UserRegistrationController, :register
+  #   post "/sign_in", SessionController, :create
+  #   post "/sign_out", SessionController, :delete
+  # end
 
   ## AUthenticated api routes
 
@@ -135,36 +168,5 @@ defmodule FarmWeb.Router do
 
   ## Authentication routes
 
-  scope "/", FarmWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
 
-    get "/users/register", UserRegistrationController, :new
-    post "/users/register", UserRegistrationController, :create
-    get "/users/log_in", UserSessionController, :new
-    post "/users/log_in", UserSessionController, :create
-    get "/users/reset_password", UserResetPasswordController, :new
-    post "/users/reset_password", UserResetPasswordController, :create
-    get "/users/reset_password/:token", UserResetPasswordController, :edit
-    put "/users/reset_password/:token", UserResetPasswordController, :update
-  end
-
-  scope "/", FarmWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings", UserSettingsController, :update
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-
-    resources "/cows", CowController
-  end
-
-  scope "/", FarmWeb do
-    pipe_through [:browser]
-
-    delete "/users/log_out", UserSessionController, :delete
-    get "/users/confirm", UserConfirmationController, :new
-    post "/users/confirm", UserConfirmationController, :create
-    get "/users/confirm/:token", UserConfirmationController, :edit
-    post "/users/confirm/:token", UserConfirmationController, :update
-  end
 end

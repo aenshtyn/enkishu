@@ -1,33 +1,30 @@
-<h1>Listing Patrons</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Phone number</th>
-            <th>Address</th>
-            <th>Role</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="row">
+    <div class="col-sm">
         <%= for patron <- @patrons do %>
-            <tr>
-                <td>
-                    <%= patron.name %>
-                </td>
-                <td>
-                    <%= patron.phone_number %>
-                </td>
-                <td>
-                    <%= patron.address %>
-                </td>
-                <td>
-                    <%= patron.role.name %>
-                </td>
-            </tr>
-            <% end %>
-    </tbody>
-</table>
+            <div class=" card text-white bg-warning mb-3 " style="width: 18rem; ">
 
-<span><%= link "New Patron", to: Routes.patron_path(@conn, :new) %></span>
+                <div class="card-body ">
+                    <h5 class="card-title ">
+                        <%= link patron.name, to: Routes.patron_path(@conn, :show, patron) %>
+                    </h5>
+
+
+
+                    <p class="card-text ">
+                        <%= patron.address %>
+                    </p>
+                    <p class="card-text ">
+                        <%= patron.phone_number %>
+                    </p>
+                    <div class="card-header ">
+                        <%= patron.role.name %>
+                    </div>
+
+                </div>
+            </div>
+            <% end %>
+    </div>
+</div>
+<a href=" ">
+    <%= link "New Patron ", to: Routes.patron_path(@conn, :new) %>
+</a>

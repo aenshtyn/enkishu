@@ -8,20 +8,18 @@
     <meta name="csrf-token" content={csrf_token_value()}>
     <%= live_title_tag assigns[:page_title] || "Farm Management System", suffix: " " %>
         <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-
-
-        <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </head>
 
 <body id="body-pd">
+
+
     <header class="header " id="header ">
         <div class="header_toggle "> <i class='bi bi-list' id="header-toggle "></i> </div>
+
         <div class="header_img "> <img src="https://i.imgur.com/hczKIze.jpg " alt=" "> </div>
     </header>
     <div class="l-navbar " id="nav-bar ">
@@ -30,19 +28,24 @@
                 <a href="# " class="nav_logo "> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name ">Enkishu</span> </a>
                 <div class="nav_list ">
                     <a href="# " class="nav_link active "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name ">Dashboard</span> </a>
-                    <a href="# " class="nav_link "> <i class="bi bi-calendar-date"></i> <span class="nav_name ">Calendar</span> </a>
-                    <a href="# " class="nav_link "> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name ">Production</span> </a>
-                    <a href="# " class="nav_link "> <i class="bi bi-cart3"></i> <span class="nav_name ">Sales</span> </a>
-                    <a href="# " class="nav_link "> <i class='bx bx-folder nav_icon'></i> <span class="nav_name ">Procurement</span> </a>
-                    <a href="# " class="nav_link "> <i class="bi bi-diagram-3-fill"></i> <span class="nav_name ">HR</span> </a>
-                    <a href="# " class="nav_link "> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name ">Stats</span> </a>
-                    <a href="cows" class="nav_link "> <i class='bx bx-user nav_icon'></i> <span class="nav_name ">Animals</span> </a>
-                    <a href="# " class="nav_link "> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name ">Farms</span> </a>
-                    <a href="records" class="nav_link "> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name ">Records</span> </a>
+
+
+                    <%= link "Production", class: "nav_link 'bx bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
+                        <%= link "Sales", class: "nav_link bi-cart3", to: Routes.patron_path(@conn, :index) %>
+                            <%= link "Procurement", class: "nav_link bx-folder", to: Routes.patron_path(@conn, :index) %>
+                                <%= link "HR", class: "nav_link bi-calendar-date", to: Routes.worker_path(@conn, :index) %>
+                                    <%= link "Patrons", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
+
+                                        <%= link "Animals", class: "nav_link bi-calendar-date", to: Routes.cow_path(@conn, :index) %>
+                                            <%= link "Farms", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
+                                                <%= link "Records", class: "nav_link bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
+
 
                 </div>
             </div>
-            <a href="# " class="nav_link "> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name ">SignOut</span> </a>
+
+            <%= render "_user_menu.html", assigns %>
+
         </nav>
     </div>
     <div class="container">
@@ -54,20 +57,20 @@
             const showNavbar = (toggleId, navId, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),
                     nav = document.getElementById(navId),
-                    bodypd = document.getElementById(bodyId),
+                    // bodypd = document.getElementById(bodyId),
                     headerpd = document.getElementById(headerId)
 
                 // Validate that all variables exist
                 if (toggle && nav && bodypd && headerpd) {
                     toggle.addEventListener('click', () => {
                         // show navbar
-                        nav.classList.toggle('show')
-                            // change icon
-                        toggle.classList.toggle('bx-x')
-                            // add padding to body
+                        // nav.classList.toggle('show')
+                        // change icon
+                        // toggle.classList.toggle('bx-x')
+                        // add padding to body
                         bodypd.classList.toggle('body-pd')
                             // add padding to header
-                        headerpd.classList.toggle('body-pd')
+                            // headerpd.classList.toggle('body-pd')
                     })
                 }
             }
@@ -88,6 +91,7 @@
             // Your code to run since DOM is loaded and ready
         });
     </script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js " integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js " integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD " crossorigin="anonymous "></script>

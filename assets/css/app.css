@@ -1,7 +1,9 @@
 /* This file is for your main application CSS */
 
-// @import "./phoenix.css";
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+/* @import "phoenix.css"; */
+
 
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"); */
 
