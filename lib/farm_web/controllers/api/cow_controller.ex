@@ -1,8 +1,10 @@
 defmodule FarmWeb.Api.CowController do
   use FarmWeb, :controller
-
+  
+  alias Farm.Repo
   alias Farm.Animals
   alias Farm.Animals.Cow
+  import Ecto.Query
 
   action_fallback FarmWeb.FallbackController
 

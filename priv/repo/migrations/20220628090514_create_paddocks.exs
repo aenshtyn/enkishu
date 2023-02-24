@@ -12,5 +12,6 @@ defmodule Farm.Repo.Migrations.CreatePaddocks do
     end
 
     create index(:paddocks, [:patron_id])
+    create unique_index(:paddocks, [:number])
   end
 end

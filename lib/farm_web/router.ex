@@ -21,25 +21,41 @@ defmodule FarmWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    # Animals
     resources "/milks", MilkController
+    resources "/donkeys", DonkeyController
     resources "/cows", CowController
+    resources "/calfs", CalfController
+
+    # HR
+    resources "/workers", WorkerController
+    resources "/patrons", PatronController
+    resources "/roles", RoleController
+    resources "/duties", DutyController
+
+
+    # LAND
+    resources "/arable", ArableController
+    resources "/paddocks", PaddockController
+
+
+    # PRODUCTION
+    resources "/products", ProductController
+
+
     resources "/machinerys", MachineryController
     resources "/medications", MedicationController
     resources "/photos", PhotoController
-    resources "/calfs", CalfController
-    resources "/donkeys", DonkeyController
     resources "/events", EventController
-    resources "/workers", WorkerController
-    resources "/duties", DutyController
-    resources "/roles", RoleController
-    resources "/patrons", PatronController
-    resources "/arable", ArableController
-    resources "/paddocks", PaddockController
-    resources "/products", ProductController
+
     # Finance
     resources "/sales", SalesController
     resources "/procurements", ProcurementsController
     resources "/salarys", SalaryController
+    resources "/customers", CustomerController
+
+
   end
 
   pipeline :api_authenticated do

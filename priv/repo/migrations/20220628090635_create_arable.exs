@@ -12,5 +12,6 @@ defmodule Farm.Repo.Migrations.CreateArable do
     end
 
     create index(:arable, [:patron_id])
+    create unique_index(:paddocks, [:number])
   end
 end

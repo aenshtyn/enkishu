@@ -6,9 +6,12 @@ defmodule FarmWeb.PatronController do
   alias Farm.HR.Role
   import Ecto.Query
 
-  def index(conn, role) do
-    patrons = HR.list_patrons(role)
-    render(conn, "index.html", patrons: patrons, role: role)
+  def index(conn, _params) do
+
+    preloads = [:role, :cows]
+    patrons = HR.list_patrons(preloads: preloads)
+    render(conn, "index.html", patrons: patrons)
+    
   end
 
   def new(conn, _params) do
@@ -36,6 +39,14 @@ defmodule FarmWeb.PatronController do
     all_roles = Farm.Repo.all(role_query)
     render(conn, "show.html", patron: patron, all_roles: all_roles)
   end
+
+  # def show_patrons_details(opts \\ []) do
+  #   roles =
+
+  #     Patron
+  #     |> Repo.all(Patron)
+  #     |> Repo.preload(roles)
+  #   end
 
   def edit(conn, %{"id" => id}) do
     patron = HR.get_patron!(id)

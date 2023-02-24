@@ -115,10 +115,13 @@ defmodule Farm.HR do
       [%Patron{}, ...]
 
   """
-  def list_patrons(role) do
+  def list_patrons(opts \\ []) do
+
+    preloads = Keyword.get(opts, :preloads, [])
+
     Patron
     |> Repo.all()
-    |> Repo.preload(:cows)
+    |> Repo.preload(preloads)
   end
 
   @doc """

@@ -11,6 +11,6 @@ defmodule Farm.Repo.Migrations.CreatePatrons do
       timestamps()
     end
 
-    create index(:patrons, [:role_id])
+    create unique_index(:patrons, [:name])
   end
 end

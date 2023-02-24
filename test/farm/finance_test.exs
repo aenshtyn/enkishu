@@ -204,4 +204,62 @@ defmodule Farm.FinanceTest do
       assert %Ecto.Changeset{} = Finance.change_salary(salary)
     end
   end
+
+  describe "customers" do
+    alias Farm.Finance.Customer
+
+    import Farm.FinanceFixtures
+
+    @invalid_attrs %{location: nil, name: nil, phone_number: nil}
+
+    test "list_customers/0 returns all customers" do
+      customer = customer_fixture()
+      assert Finance.list_customers() == [customer]
+    end
+
+    test "get_customer!/1 returns the customer with given id" do
+      customer = customer_fixture()
+      assert Finance.get_customer!(customer.id) == customer
+    end
+
+    test "create_customer/1 with valid data creates a customer" do
+      valid_attrs = %{location: "some location", name: "some name", phone_number: 42}
+
+      assert {:ok, %Customer{} = customer} = Finance.create_customer(valid_attrs)
+      assert customer.location == "some location"
+      assert customer.name == "some name"
+      assert customer.phone_number == 42
+    end
+
+    test "create_customer/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Finance.create_customer(@invalid_attrs)
+    end
+
+    test "update_customer/2 with valid data updates the customer" do
+      customer = customer_fixture()
+      update_attrs = %{location: "some updated location", name: "some updated name", phone_number: 43}
+
+      assert {:ok, %Customer{} = customer} = Finance.update_customer(customer, update_attrs)
+      assert customer.location == "some updated location"
+      assert customer.name == "some updated name"
+      assert customer.phone_number == 43
+    end
+
+    test "update_customer/2 with invalid data returns error changeset" do
+      customer = customer_fixture()
+      assert {:error, %Ecto.Changeset{}} = Finance.update_customer(customer, @invalid_attrs)
+      assert customer == Finance.get_customer!(customer.id)
+    end
+
+    test "delete_customer/1 deletes the customer" do
+      customer = customer_fixture()
+      assert {:ok, %Customer{}} = Finance.delete_customer(customer)
+      assert_raise Ecto.NoResultsError, fn -> Finance.get_customer!(customer.id) end
+    end
+
+    test "change_customer/1 returns a customer changeset" do
+      customer = customer_fixture()
+      assert %Ecto.Changeset{} = Finance.change_customer(customer)
+    end
+  end
 end

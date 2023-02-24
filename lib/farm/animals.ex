@@ -18,14 +18,24 @@ defmodule Farm.Animals do
       [%Cow{}, ...]
 
   """
-  def list_cows(patron) do
+  # def list_cows(patron) do
+  #   Cow
+  #   |> Repo.all()
+  #   |> Repo.preload(:milks)
+  #   |> Repo.preload(:events)
+
+  #   # Repo.all(Cow)
+  # end
+
+
+  def list_cows(opts \\ []) do
+
+    preloads = Keyword.get(opts, :preloads, [])
     Cow
     |> Repo.all()
-    |> Repo.preload(:milks)
-    |> Repo.preload(:events)
-
-    # Repo.all(Cow)
+    |> Repo.preload(preloads)
   end
+
 
   # def preload(data) do
   #   Repo.preload(data)
@@ -45,7 +55,7 @@ defmodule Farm.Animals do
       ** (Ecto.NoResultsError)
 
   """
-  def get_cow!(id), do: Repo.get!(Cow, id) |> Repo.preload(:milks)
+  def get_cow!(id), do: Repo.get!(Cow, id) |> Repo.preload([:milks, :patron])
 
   @doc """
   Creates a cow.

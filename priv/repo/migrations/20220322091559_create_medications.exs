@@ -9,5 +9,7 @@ defmodule Farm.Repo.Migrations.CreateMedications do
 
       timestamps()
     end
+
+    create unique_index(:tags, [:name])
   end
 end

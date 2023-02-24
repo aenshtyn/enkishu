@@ -53,4 +53,20 @@ defmodule Farm.FinanceFixtures do
 
     salary
   end
+
+  @doc """
+  Generate a customer.
+  """
+  def customer_fixture(attrs \\ %{}) do
+    {:ok, customer} =
+      attrs
+      |> Enum.into(%{
+        location: "some location",
+        name: "some name",
+        phone_number: 42
+      })
+      |> Farm.Finance.create_customer()
+
+    customer
+  end
 end

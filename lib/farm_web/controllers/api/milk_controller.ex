@@ -1,6 +1,7 @@
 defmodule FarmWeb.Api.MilkController do
   use FarmWeb, :controller
 
+  alias Farm.Repo
   alias Farm.Products
   alias Farm.Products.Milk
 
@@ -8,6 +9,7 @@ defmodule FarmWeb.Api.MilkController do
 
   def index(conn, cow) do
     milks = Products.list_milks(cow)
+    # Repo.preload(Farm.Animals.Cow, :patron)
     render(conn, "index.json", milks: milks, cow: cow)
   end
 
