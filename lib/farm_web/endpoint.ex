@@ -20,7 +20,7 @@ defmodule FarmWeb.Endpoint do
     at: "/",
     from: :farm,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: ~w(assets css fonts images favicon.ico robots.txt)
 
   plug Plug.Static,
     at: "/uploads",

@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+
+        <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+
 </head>
 
 <body id="body-pd">
@@ -24,25 +27,7 @@
     </header>
     <div class="l-navbar " id="nav-bar ">
         <nav class="nav ">
-            <div>
-                <a href="# " class="nav_logo "> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name ">Enkishu</span> </a>
-                <div class="nav_list ">
-                    <a href="# " class="nav_link active "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name ">Dashboard</span> </a>
 
-
-                    <%= link "Production", class: "nav_link 'bx bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
-                        <%= link "Sales", class: "nav_link bi-cart3", to: Routes.patron_path(@conn, :index) %>
-                            <%= link "Procurement", class: "nav_link bx-folder", to: Routes.patron_path(@conn, :index) %>
-                                <%= link "HR", class: "nav_link bi-calendar-date", to: Routes.worker_path(@conn, :index) %>
-                                    <%= link "Patrons", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
-
-                                        <%= link "Animals", class: "nav_link bi-calendar-date", to: Routes.cow_path(@conn, :index) %>
-                                            <%= link "Farms", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
-                                                <%= link "Records", class: "nav_link bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
-
-
-                </div>
-            </div>
 
             <%= render "_user_menu.html", assigns %>
 
@@ -52,46 +37,6 @@
         <%=@ inner_content %>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded ", function(event) {
-            const showNavbar = (toggleId, navId, bodyId, headerId) => {
-                const toggle = document.getElementById(toggleId),
-                    nav = document.getElementById(navId),
-                    // bodypd = document.getElementById(bodyId),
-                    headerpd = document.getElementById(headerId)
-
-                // Validate that all variables exist
-                if (toggle && nav && bodypd && headerpd) {
-                    toggle.addEventListener('click', () => {
-                        // show navbar
-                        // nav.classList.toggle('show')
-                        // change icon
-                        // toggle.classList.toggle('bx-x')
-                        // add padding to body
-                        bodypd.classList.toggle('body-pd')
-                            // add padding to header
-                            // headerpd.classList.toggle('body-pd')
-                    })
-                }
-            }
-
-            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
-
-            /*===== LINK ACTIVE =====*/
-            const linkColor = document.querySelectorAll('.nav_link')
-
-            function colorLink() {
-                if (linkColor) {
-                    linkColor.forEach(l => l.classList.remove('active'))
-                    this.classList.add('active')
-                }
-            }
-            linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-            // Your code to run since DOM is loaded and ready
-        });
-    </script>
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js " integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js " integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD " crossorigin="anonymous "></script>

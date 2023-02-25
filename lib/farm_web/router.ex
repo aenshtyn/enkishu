@@ -96,44 +96,44 @@ defmodule FarmWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", FarmWeb.Api, as: :api do
-  #   pipe_through :api
+  scope "/api", FarmWeb.Api, as: :api do
+    pipe_through :api
 
-  #   #Products
-  #   resources "/calfs", CalfController
-  #   resources "/milks", MilkController
-  #   # resources "/cows", CowController
-  #   get "/cows/total", CowController, :total_number
-  #   resources "/donkeys", DonkeyController
-  #   resources "/events", EventController
+    #Products
+    resources "/calfs", CalfController
+    resources "/milks", MilkController
+    # resources "/cows", CowController
+    get "/cows/total", CowController, :total_number
+    resources "/donkeys", DonkeyController
+    resources "/events", EventController
 
-  #   #Inventory
-  #   resources "/machinerys", MachineryController
-  #   resources "/medications", MedicationController
+    #Inventory
+    resources "/machinerys", MachineryController
+    resources "/medications", MedicationController
 
-  #   # HR
-  #   resources "/workers", WorkerController
-  #   resources "/duties", DutyController
-  #   resources "/roles", RoleController
-  #   resources "/patrons", PatronController
+    # HR
+    resources "/workers", WorkerController
+    resources "/duties", DutyController
+    resources "/roles", RoleController
+    resources "/patrons", PatronController
 
-  #   # Land
-  #   resources "/arable", ArableController
-  #   resources "/paddocks", PaddockController
+    # Land
+    resources "/arable", ArableController
+    resources "/paddocks", PaddockController
 
-  #   # Products
-  #   resources "/products", ProductController
+    # Products
+    resources "/products", ProductController
 
-  #   # Finance
-  #   resources "/sales", SalesController
-  #   resources "/procurements", ProcurementsController
-  #   resources "/salarys", SalaryController
+    # Finance
+    resources "/sales", SalesController
+    resources "/procurements", ProcurementsController
+    resources "/salarys", SalaryController
 
-  #   # Accounts
-  #   post "/register", UserRegistrationController, :register
-  #   post "/sign_in", SessionController, :create
-  #   post "/sign_out", SessionController, :delete
-  # end
+    # Accounts
+    post "/register", UserRegistrationController, :register
+    post "/sign_in", SessionController, :create
+    post "/sign_out", SessionController, :delete
+  end
 
   ## AUthenticated api routes
 
