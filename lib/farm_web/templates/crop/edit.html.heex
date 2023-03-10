@@ -1,0 +1,5 @@
+<h1>Edit Crop</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.crop_path(@conn, :update, @crop)) %>
+
+<span><%= link "Back", to: Routes.crop_path(@conn, :index) %></span>

@@ -4,24 +4,31 @@
             <p>Oops, something went wrong! Please check the errors below.</p>
         </div>
         <% end %>
+            <form>
+                <div class="mb-3">
+                    <%= label f, :name %>
+                        <%= text_input f, :name %>
+                            <%= error_tag f, :name %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :dob %>
+                        <%= date_select f, :dob, year: [options: 2000..20500]%>
+                            <%= error_tag f, :dob %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :breed %>
+                        <%= text_input f, :breed %>
+                            <%= error_tag f, :breed %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :owner %>
+                        <%= select(f, :patron_id, @all_patrons) %>
+                            <%= error_tag f, :patron_id %>
+                </div>
 
-            <%= label f, :name %>
-                <%= text_input f, :name %>
-                    <%= error_tag f, :name %>
-
-                        <%= label f, :dob %>
-                            <%= date_select f, :dob, year: [options: 2000..20500]%>
-                                <%= error_tag f, :dob %>
-
-                                    <%= label f, :breed %>
-                                        <%= text_input f, :breed %>
-                                            <%= error_tag f, :breed %>
-
-                                                <%= label f, :owner %>
-                                                    <%= select(f, :patron_id, @all_patrons) %>
-                                                        <%= error_tag f, :patron_id %>
-
-                                                            <div>
-                                                                <%= submit "Save" %>
-                                                            </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <%= submit "Save" %>
+                </div>
+            </form>
 </.form>

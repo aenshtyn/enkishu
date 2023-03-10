@@ -16,7 +16,7 @@
             </div>
             <div class="mb-3">
                 <%= label f, :dob %>
-                    <%= datetime_select f, :dob %>
+                    <%= date_select f, :dob, year: [options: 1950..2020]%>
                         <%= error_tag f, :dob %>
             </div>
 
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <%= label f, :report_date %>
-                    <%= datetime_select f, :report_date %>
+                    <%= date_select f, :report_date %>
                         <%= error_tag f, :report_date %>
             </div>
             <div class="mb-3">

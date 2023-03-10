@@ -41,7 +41,9 @@ defmodule FarmWeb.CowController do
   def edit(conn, %{"id" => id}) do
     cow = Animals.get_cow!(id)
     changeset = Animals.change_cow(cow)
-    render(conn, "edit.html", cow: cow, changeset: changeset)
+    patron_query = from(p in Patron, select: {p.name, p.id})
+    all_patrons = Farm.Repo.all(patron_query)
+    render(conn, "edit.html", cow: cow, changeset: changeset, all_patrons: all_patrons)
   end
 
   def update(conn, %{"id" => id, "cow" => cow_params}) do

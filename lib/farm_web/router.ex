@@ -51,12 +51,12 @@ defmodule FarmWeb.Router do
   end
 
   scope "/", FarmWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
 
     get "/", PageController, :index
 
     # Animals
-    resources "/milks", MilkController
+
     resources "/donkeys", DonkeyController
     resources "/cows", CowController
     resources "/calfs", CalfController
@@ -75,8 +75,10 @@ defmodule FarmWeb.Router do
 
     # PRODUCTION
     resources "/products", ProductController
+    resources "/crops", CropController
+    resources "/milks", MilkController
 
-
+    # OTHERS
     resources "/machinerys", MachineryController
     resources "/medications", MedicationController
     resources "/photos", PhotoController

@@ -1,0 +1,65 @@
+<.form let={f} for={@changeset} action={@action}>
+    <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+            <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+        <% end %>
+            <form>
+                <div class="mb-3">
+
+                    <%= label f, :name %>
+                        <%= text_input f, :name %>
+                            <%= error_tag f, :name %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :variety %>
+                        <%= text_input f, :variety %>
+                            <%= error_tag f, :variety %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :scientific_name %>
+                        <%= text_input f, :scientific_name %>
+                            <%= error_tag f, :scientific_name %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :Paddock %>
+                        <%= select(f, :paddock_id, @all_paddocks) %>
+                            <%= error_tag f, :paddock_id %>
+                </div>
+
+                <div class="mb-3">
+                    <%= label f, :plating_day %>
+                        <%= date_select f, :plating_day %>
+                            <%= error_tag f, :plating_day %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :production_per_acre %>
+                        <%= number_input f, :production_per_acre %>
+                            <%= error_tag f, :production_per_acre %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :rainfall_requirements %>
+                        <%= number_input f, :rainfall_requirements %>
+                            <%= error_tag f, :rainfall_requirements %>
+                </div>
+                <div class="mb-3">
+
+                    <%= label f, :maturity %>
+                        <%= number_input f, :maturity %>
+                            <%= error_tag f, :maturity %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :weeding %>
+                        <%= checkbox f, :weeding %>
+                            <%= error_tag f, :weeding %>
+                </div>
+                <div class="mb-3">
+                    <%= label f, :fertilizer %>
+                        <%= checkbox f, :fertilizer %>
+                            <%= error_tag f, :fertilizer %>
+                </div>
+                <div>
+                    <%= submit "Save" %>
+                </div>
+            </form>
+</.form>

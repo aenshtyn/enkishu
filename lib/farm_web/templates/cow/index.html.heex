@@ -16,6 +16,9 @@
                                 <%= cow.breed %>
                             </p>
                             <p class="card-text ">
+                                <%= cow.age %>
+                            </p>
+                            <p class="card-text ">
                                 <%= cow.patron.name %>
                             </p>
                             <span><%= link "Show", class: "i bx-message-square-detail ", to: Routes.cow_path(@conn, :show, cow) %></span>

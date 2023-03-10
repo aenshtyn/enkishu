@@ -1,0 +1,56 @@
+<h1>Show Crop</h1>
+
+<ul>
+
+    <li>
+        <strong>Name:</strong>
+        <%= @crop.name %>
+    </li>
+
+    <li>
+        <strong>Variety:</strong>
+        <%= @crop.variety %>
+    </li>
+
+    <li>
+        <strong>Scientific name:</strong>
+        <%= @crop.scientific_name %>
+    </li>
+
+    <li>
+        <strong>Plating day:</strong>
+        <%= @crop.plating_day %>
+    </li>
+    <li>
+        <strong>Paddock:</strong>
+        <%= @crop.paddock.number %>
+    </li>
+    <li>
+        <strong>Production per acre:</strong>
+        <%= @crop.production_per_acre %>
+    </li>
+
+    <li>
+        <strong>Rainfall requirements:</strong>
+        <%= @crop.rainfall_requirements %>
+    </li>
+
+    <li>
+        <strong>Maturity:</strong>
+        <%= @crop.maturity %>
+    </li>
+
+    <li>
+        <strong>Weeding:</strong>
+        <%= @crop.weeding %>
+    </li>
+
+    <li>
+        <strong>Fertilizer:</strong>
+        <%= @crop.fertilizer %>
+    </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.crop_path(@conn, :edit, @crop) %></span> |
+<span><%= link "Back", to: Routes.crop_path(@conn, :index) %></span>
