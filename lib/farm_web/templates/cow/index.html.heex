@@ -1,3 +1,39 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Breed</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for cow <- @cows do %>
+            <tr>
+                <th scope="row">
+                    <%= cow.id %>
+                </th>
+                <td>
+                    <%= cow.name %>
+                </td>
+                <td>
+                    <%= cow.breed %>
+                </td>
+                <td>
+                    <%= cow.patron.name %>
+                </td>
+                <td>
+                    <span><%= link "S", class: "i bx-message-square-detail ", to: Routes.cow_path(@conn, :show, cow) %></span>
+                    <span><%= link "E", class: "bx:bxs-edit-alt ", to: Routes.cow_path(@conn, :edit, cow) %></span>
+                    <span><%= link "D", class: "bx:trash", to: Routes.cow_path(@conn, :delete, cow), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+
+            <% end %>
+    </tbody>
+</table>
+
 <span><%= link "Add Cow", to: Routes.cow_path(@conn, :new) %></span>
 
 <div class="container">

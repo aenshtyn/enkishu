@@ -18,21 +18,25 @@
 </head>
 
 <body id="body-pd">
+    <header>
+        <section class="container">
 
 
-    <header class="header " id="header ">
-        <div class="header_toggle "> <i class='bi bi-list' id="header-toggle "></i> </div>
+            <header class="header " id="header ">
+                <div class="header_toggle "> <i class='bi bi-list' id="header-toggle "></i> </div>
 
-        <div class="header_img "> <img src="https://i.imgur.com/hczKIze.jpg " alt=" "> </div>
+                <div class="header_img "> <img src="https://i.imgur.com/hczKIze.jpg " alt=" "> </div>
+                <div class="l-navbar " id="nav-bar ">
+                    <nav class="nav ">
+
+
+                        <%= render "_user_menu.html", assigns %>
+
+                    </nav>
+                </div>
+            </header>
+        </section>
     </header>
-    <div class="l-navbar " id="nav-bar ">
-        <nav class="nav ">
-
-
-            <%= render "_user_menu.html", assigns %>
-
-        </nav>
-    </div>
     <div class="container">
         <%=@ inner_content %>
     </div>
