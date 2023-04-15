@@ -1,0 +1,23 @@
+<h1>Show Feeds</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @feeds.name %>
+  </li>
+
+  <li>
+    <strong>Quantity:</strong>
+    <%= @feeds.quantity %>
+  </li>
+
+  <li>
+    <strong>Weight:</strong>
+    <%= @feeds.weight %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.feeds_path(@conn, :edit, @feeds) %></span> |
+<span><%= link "Back", to: Routes.feeds_path(@conn, :index) %></span>

@@ -1,28 +1,32 @@
 <h1>Listing Sheeps</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for sheep <- @sheeps do %>
-    <tr>
-      <td><%= sheep.name %></td>
-      <td><%= sheep.age %></td>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for sheep <- @sheeps do %>
+            <tr>
+                <td>
+                    <%= sheep.name %>
+                </td>
+                <td>
+                    <%= sheep.age %>
+                </td>
 
-      <td>
-        <span><%= link "Show", to: Routes.sheep_path(@conn, :show, sheep) %></span>
-        <span><%= link "Edit", to: Routes.sheep_path(@conn, :edit, sheep) %></span>
-        <span><%= link "Delete", to: Routes.sheep_path(@conn, :delete, sheep), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
+                <td>
+                    <span><%= link "Show", to: Routes.sheep_path(@conn, :show, sheep) %></span>
+                    <span><%= link "Edit", to: Routes.sheep_path(@conn, :edit, sheep) %></span>
+                    <span><%= link "Delete", to: Routes.sheep_path(@conn, :delete, sheep), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
 </table>
 
 <span><%= link "New Sheep", to: Routes.sheep_path(@conn, :new) %></span>

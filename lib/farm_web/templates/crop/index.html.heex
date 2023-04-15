@@ -1,42 +1,63 @@
 <h1>Listing Crops</h1>
+<table class="table table-sm table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Variety</th>
+            <th>Scientific name</th>
+            <th>Paddock </th>
+            <th>Plating day</th>
+            <th>Production per acre</th>
+            <th>Rainfall requirements</th>
+            <th>Maturity</th>
+            <th>Weeding</th>
+            <th>Fertilizer</th>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Variety</th>
-      <th>Scientific name</th>
-      <th>Plating day</th>
-      <th>Production per acre</th>
-      <th>Rainfall requirements</th>
-      <th>Maturity</th>
-      <th>Weeding</th>
-      <th>Fertilizer</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for crop <- @crops do %>
+            <tr>
+                <td>
+                    <%= crop.name %>
+                </td>
+                <td>
+                    <%= crop.variety %>
+                </td>
+                <td>
+                    <%= crop.scientific_name %>
+                </td>
+                <td>
+                    <%= crop.paddock.number %>
+                </td>
+                <td>
+                    <%= crop.plating_day %>
+                </td>
+                <td>
+                    <%= crop.production_per_acre %>
+                </td>
+                <td>
+                    <%= crop.rainfall_requirements %>
+                </td>
+                <td>
+                    <%= crop.maturity %>
+                </td>
+                <td>
+                    <%= crop.weeding %>
+                </td>
+                <td>
+                    <%= crop.fertilizer %>
+                </td>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for crop <- @crops do %>
-    <tr>
-      <td><%= crop.name %></td>
-      <td><%= crop.variety %></td>
-      <td><%= crop.scientific_name %></td>
-      <td><%= crop.plating_day %></td>
-      <td><%= crop.production_per_acre %></td>
-      <td><%= crop.rainfall_requirements %></td>
-      <td><%= crop.maturity %></td>
-      <td><%= crop.weeding %></td>
-      <td><%= crop.fertilizer %></td>
-
-      <td>
-        <span><%= link "Show", to: Routes.crop_path(@conn, :show, crop) %></span>
-        <span><%= link "Edit", to: Routes.crop_path(@conn, :edit, crop) %></span>
-        <span><%= link "Delete", to: Routes.crop_path(@conn, :delete, crop), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
+                <td>
+                    <span><%= link "Show", to: Routes.crop_path(@conn, :show, crop) %></span>
+                    <span><%= link "Edit", to: Routes.crop_path(@conn, :edit, crop) %></span>
+                    <span><%= link "Delete", to: Routes.crop_path(@conn, :delete, crop), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
 </table>
 
 <span><%= link "New Crop", to: Routes.crop_path(@conn, :new) %></span>

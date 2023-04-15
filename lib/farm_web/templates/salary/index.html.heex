@@ -1,28 +1,32 @@
 <h1>Listing Salarys</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Grade</th>
-      <th>Amount</th>
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Grade</th>
+            <th>Amount</th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for salary <- @salarys do %>
-    <tr>
-      <td><%= salary.grade %></td>
-      <td><%= salary.amount %></td>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for salary <- @salarys do %>
+            <tr>
+                <td>
+                    <%= salary.grade %>
+                </td>
+                <td>
+                    <%= salary.amount %>
+                </td>
 
-      <td>
-        <span><%= link "Show", to: Routes.salary_path(@conn, :show, salary) %></span>
-        <span><%= link "Edit", to: Routes.salary_path(@conn, :edit, salary) %></span>
-        <span><%= link "Delete", to: Routes.salary_path(@conn, :delete, salary), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
+                <td>
+                    <span><%= link "Show", to: Routes.salary_path(@conn, :show, salary) %></span>
+                    <span><%= link "Edit", to: Routes.salary_path(@conn, :edit, salary) %></span>
+                    <span><%= link "Delete", to: Routes.salary_path(@conn, :delete, salary), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
 </table>
 
 <span><%= link "New Salary", to: Routes.salary_path(@conn, :new) %></span>

@@ -1,0 +1,18 @@
+<h1>Show Feeding</h1>
+
+<ul>
+
+  <li>
+    <strong>Day:</strong>
+    <%= @feeding.day %>
+  </li>
+
+  <li>
+    <strong>Volume:</strong>
+    <%= @feeding.volume %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.feeding_path(@conn, :edit, @feeding) %></span> |
+<span><%= link "Back", to: Routes.feeding_path(@conn, :index) %></span>

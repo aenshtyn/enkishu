@@ -6,9 +6,11 @@ defmodule FarmWeb.MilkController do
   alias Farm.Animals.Cow
   import Ecto.Query
 
-  def index(conn, cow) do
-    milks = Products.list_milks(cow)
-    render(conn, "index.html", milks: milks, cow: cow)
+  def index(conn, _params) do
+
+    preloads = [:cow ]
+    milks = Products.list_milks(preloads: preloads)
+    render(conn, "index.html", milks: milks)
   end
 
   def new(conn, _params) do

@@ -1,56 +1,66 @@
-<%= if @current_user do %>
-
-    <div class="l-navbar " id="nav-bar ">
-        <nav class="nav ">
-            <div>
-                <a href="# " class="nav_logo "> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name ">Enkishu</span> </a>
-                <div class="nav_list ">
-                    <a href="# " class="nav_link active "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name ">Dashboard</span> </a>
-
-
-                    <%= link "Production", class: "nav_link 'bx bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
-                        <%= link "Sales", class: "nav_link bi-cart3", to: Routes.patron_path(@conn, :index) %>
-                            <%= link "Procurement", class: "nav_link bx-folder", to: Routes.patron_path(@conn, :index) %>
-                                <%= link "HR", class: "nav_link bi-calendar-date", to: Routes.worker_path(@conn, :index) %>
-                                    <%= link "Patrons", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
-
-                                        <%= link "Animals", class: "nav_link bi-calendar-date", to: Routes.cow_path(@conn, :index) %>
-                                            <%= link "Farms", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
-                                                <%= link "Records", class: "nav_link bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
-
-
-                </div>
-            </div>
-
-            <%= @current_user.username %>
-
-
-                <%= link " Settings ", class: "nav_link bx:wrench ", to: Routes.user_settings_path(@conn, :edit) %>
-
-
-                    <%= link "Log out ", class: "nav_link bx:log-out ",  to: Routes.user_session_path(@conn, :delete), method: :delete %>
-        </nav>
-    </div>
-
-    <% else %>
-
+<header class="header " id="header ">
+    <div class="header_toggle "> <i class='bi bi-list' id="header-toggle "></i>
         <div class="l-navbar " id="nav-bar ">
             <nav class="nav ">
-                <div>
-                    <a href="# " class="nav_logo "> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name ">Enkishu</span> </a>
-                    <div class="nav_list ">
-                        <a href="# " class="nav_link active "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name ">Dashboard</span> </a>
 
+
+                <%= if @current_user do %>
+
+                    <div class="l-navbar " id="nav-bar ">
+                        <nav class="nav ">
+                            <div>
+                                <a href="# " class="nav_logo "> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name ">Enkishu</span> </a>
+                                <div class="nav_list ">
+                                    <a href="# " class="nav_link active "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name ">Dashboard</span> </a>
+
+
+                                    <%= link "Production", class: "nav_link 'bx bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
+                                        <%= link "Sales", class: "nav_link bi-cart3", to: Routes.patron_path(@conn, :index) %>
+                                            <%= link "Procurement", class: "nav_link bx-folder", to: Routes.patron_path(@conn, :index) %>
+                                                <%= link "HR", class: "nav_link bi-calendar-date", to: Routes.worker_path(@conn, :index) %>
+                                                    <%= link "Patrons", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
+
+                                                        <%= link "Animals", class: "nav_link bi-calendar-date", to: Routes.cow_path(@conn, :index) %>
+                                                            <%= link "Farms", class: "nav_link bi-calendar-date", to: Routes.patron_path(@conn, :index) %>
+                                                                <%= link "Records", class: "nav_link bx-message-square-detail", to: Routes.patron_path(@conn, :index) %>
+
+
+                                </div>
+                            </div>
+
+                            <%= @current_user.username %>
+
+
+                                <%= link " Settings ", class: "nav_link bx:wrench ", to: Routes.user_settings_path(@conn, :edit) %>
+
+
+                                    <%= link "Log out ", class: "nav_link bx:log-out ",  to: Routes.user_session_path(@conn, :delete), method: :delete %>
+                        </nav>
                     </div>
-                </div>
+
+                    <% else %>
+
+                        <div class="l-navbar " id="nav-bar ">
+                            <nav class="nav ">
+                                <div>
+                                    <a href="# " class="nav_logo "> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name ">Enkishu</span> </a>
+                                    <div class="nav_list ">
+                                        <a href="# " class="nav_link active "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name ">Dashboard</span> </a>
+
+                                    </div>
+                                </div>
 
 
 
-                <%= link "Register ",  class: "nav_link bx-message-square-detail ", to: Routes.user_registration_path(@conn, :new) %>
+                                <%= link "Register ",  class: "nav_link bx-message-square-detail ", to: Routes.user_registration_path(@conn, :new) %>
 
-                    <%= link "Log in ",  class: "nav_link bx:log-in ", to: Routes.user_session_path(@conn, :new) %>
+                                    <%= link "Log in ",  class: "nav_link bx:log-in ", to: Routes.user_session_path(@conn, :new) %>
+                            </nav>
+                        </div>
+
+
+                        <% end %>
             </nav>
         </div>
-
-
-        <% end %>
+    </div>
+</header>

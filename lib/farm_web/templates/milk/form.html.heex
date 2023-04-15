@@ -1,28 +1,49 @@
 <.form let={f} for={@changeset} action={@action}>
+
+    <h1>Record Milk</h1>
     <%= if @changeset.action do %>
         <div class="alert alert-danger">
             <p>Oops, something went wrong! Please check the errors below.</p>
         </div>
         <% end %>
+            <div class="mb-3">
+                <%= label f, :day %>
+                    <%= date_select f, :day %>
+                        <%= error_tag f, :day %>
 
-            <%= label f, :day %>
-                <%= date_select f, :day %>
-                    <%= error_tag f, :day %>
+            </div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Cow</th>
+                        <th>Morning</th>
+                        <th>Evening</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                        <%= label f, :volume %>
-                            <%= number_input f, :volume, step: "any" %>
-                                <%= error_tag f, :volume %>
+                    <tr>
+                        <td>
 
-                                    <%= label f, :milking_time %>
-                                        <%= select f, :milking_time, ["Morning": "AM", "Evening": "PM"] %>
-                                            <%= error_tag f, :milking_time %>
+                        </td>
+                        <td>
+                            <input type="number" id="morning_volume" name="quantity">
 
-                                                <%= label f, :cow %>
-                                                    <%= select(f, :cow_id, @all_cows) %>
-                                                        <%= error_tag f, :cow_id %>
+                        </td>
+                        <td>
+                            <input type="number" id="evening_volume" name="quantity">
+                        </td>
+                        <td>
 
+                        </td>
 
-                                                            <div>
-                                                                <%= submit "Save" %>
-                                                            </div>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="mb-3">
+                <%= submit "Save" %>
+            </div>
 </.form>

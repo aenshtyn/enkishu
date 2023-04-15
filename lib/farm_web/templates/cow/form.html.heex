@@ -5,22 +5,22 @@
         </div>
         <% end %>
             <form>
-                <div class="mb-3">
+                <div class="form-group">
                     <%= label f, :name %>
                         <%= text_input f, :name %>
                             <%= error_tag f, :name %>
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
                     <%= label f, :dob %>
                         <%= date_select f, :dob, year: [options: 2000..20500]%>
                             <%= error_tag f, :dob %>
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
                     <%= label f, :breed %>
                         <%= text_input f, :breed %>
                             <%= error_tag f, :breed %>
                 </div>
-                <div class="mb-3">
+                <div class="form-group">
                     <%= label f, :owner %>
                         <%= select(f, :patron_id, @all_patrons) %>
                             <%= error_tag f, :patron_id %>

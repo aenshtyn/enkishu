@@ -33,9 +33,12 @@ defmodule Farm.Products do
   #   Repo.all(Milk)
   # end
 
-  def list_milks(cow) do
-    Repo.all(Milk)
-    # Repo.preload(:cows)
+  def list_milks(opts \\ []) do
+
+    preloads = Keyword.get(opts, :preloads, [])
+    Milk
+    |> Repo.all()
+    |> Repo.preload(preloads)
   end
 
   @doc """

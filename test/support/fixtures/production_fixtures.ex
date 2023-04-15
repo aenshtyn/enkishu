@@ -25,4 +25,35 @@ defmodule Farm.ProductionFixtures do
 
     crop
   end
+
+  @doc """
+  Generate a feeding.
+  """
+  def feeding_fixture(attrs \\ %{}) do
+    {:ok, feeding} =
+      attrs
+      |> Enum.into(%{
+        day: ~D[2023-03-09],
+        volume: 42
+      })
+      |> Farm.Production.create_feeding()
+
+    feeding
+  end
+
+  @doc """
+  Generate a feeds.
+  """
+  def feeds_fixture(attrs \\ %{}) do
+    {:ok, feeds} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        quantity: 42,
+        weight: 42
+      })
+      |> Farm.Production.create_feeds()
+
+    feeds
+  end
 end

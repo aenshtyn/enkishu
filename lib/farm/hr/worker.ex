@@ -5,10 +5,10 @@ defmodule Farm.HR.Worker do
 
   schema "workers" do
     field :address, :string
-    field :dob, :naive_datetime
+    field :dob, :date
     field :name, :string
     field :phone_number, :integer
-    field :report_date, :naive_datetime
+    field :report_date, :date
     belongs_to :role, Role
     # belongs_to :salary, Salary
 

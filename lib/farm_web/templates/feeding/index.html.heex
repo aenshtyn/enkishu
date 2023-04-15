@@ -1,0 +1,35 @@
+<h1>Listing Feedings</h1>
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Day</th>
+            <th>Feeds</th>
+            <th>Volume</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for feeding <- @feedings do %>
+            <tr>
+                <td>
+                    <%= feeding.day %>
+                </td>
+                <td>
+                    <%= feeding.feeds.name %>
+                </td>
+                <td>
+                    <%= feeding.volume %>
+                </td>
+
+                <td>
+                    <span><%= link "Show", to: Routes.feeding_path(@conn, :show, feeding) %></span>
+                    <span><%= link "Edit", to: Routes.feeding_path(@conn, :edit, feeding) %></span>
+                    <span><%= link "Delete", to: Routes.feeding_path(@conn, :delete, feeding), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New Feeding", to: Routes.feeding_path(@conn, :new) %></span>

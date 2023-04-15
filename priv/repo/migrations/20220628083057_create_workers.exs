@@ -3,10 +3,10 @@ defmodule Farm.Repo.Migrations.CreateWorkers do
 
   def change do
     create table(:workers) do
-      add :dob, :naive_datetime
+      add :dob, :date
       add :name, :string
       add :phone_number, :integer
-      add :report_date, :naive_datetime
+      add :report_date, :date
       add :address, :string
       add :role_id, references(:roles, on_delete: :nothing)
       add :salary, references(:salarys, on_delete: :nothing)

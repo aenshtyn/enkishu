@@ -60,6 +60,7 @@ defmodule FarmWeb.Router do
     resources "/donkeys", DonkeyController
     resources "/cows", CowController
     resources "/calfs", CalfController
+    resources "/sheep", SheepController
 
     # HR
     resources "/workers", WorkerController
@@ -77,6 +78,8 @@ defmodule FarmWeb.Router do
     resources "/products", ProductController
     resources "/crops", CropController
     resources "/milks", MilkController
+    resources "/feeds", FeedsController
+    resources "/feedings", FeedingController
 
     # OTHERS
     resources "/machinerys", MachineryController
@@ -86,7 +89,7 @@ defmodule FarmWeb.Router do
 
     # Finance
     resources "/sales", SalesController
-    resources "/procurements", ProcurementsController
+    resources "/purchases", PurchasesController
     resources "/salarys", SalaryController
     resources "/customers", CustomerController
 

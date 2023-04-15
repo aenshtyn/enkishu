@@ -1,0 +1,36 @@
+<h1>Listing Feeds</h1>
+
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Weight</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= for feeds <- @feeds do %>
+            <tr>
+                <td>
+                    <%= feeds.name %>
+                </td>
+                <td>
+                    <%= feeds.quantity %>
+                </td>
+                <td>
+                    <%= feeds.weight %>
+                </td>
+
+                <td>
+                    <span><%= link "Show", to: Routes.feeds_path(@conn, :show, feeds) %></span>
+                    <span><%= link "Edit", to: Routes.feeds_path(@conn, :edit, feeds) %></span>
+                    <span><%= link "Delete", to: Routes.feeds_path(@conn, :delete, feeds), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+</table>
+
+<span><%= link "New Feeds", to: Routes.feeds_path(@conn, :new) %></span>

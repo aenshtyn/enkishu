@@ -3,7 +3,7 @@ defmodule Farm.HR.Duty do
   import Ecto.Changeset
 
   schema "duties" do
-    field :day, :naive_datetime
+    field :day, :date
     field :description, :string
     field :name, :string
     belongs_to :worker, Farm.Hr.Worker

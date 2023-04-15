@@ -1,4 +1,4 @@
-defmodule FarmWeb.ProcurementsController do
+defmodule FarmWeb.PurchasesController do
   use FarmWeb, :controller
 
   alias Farm.Finance

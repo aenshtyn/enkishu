@@ -1,6 +1,6 @@
 <h1>Listing Milks</h1>
 
-<table>
+<table class="table table-hover table-striped table-bordered">
     <thead>
         <tr>
             <th>Day</th>
@@ -24,7 +24,7 @@
                     <%= milk.milking_time %>
                 </td>
                 <td>
-                    <%= milk.cow_id %>
+                    <%= milk.cow.name %>
                 </td>
 
                 <td>

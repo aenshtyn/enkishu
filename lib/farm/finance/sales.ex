@@ -1,6 +1,7 @@
 defmodule Farm.Finance.Sales do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Farm.Inventory.Product
 
   schema "sales" do
     field :customer_name, :string

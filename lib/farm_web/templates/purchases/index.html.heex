@@ -1,6 +1,6 @@
-<h1>Listing Procurements</h1>
+<h1>Listing purchases</h1>
 
-<table>
+<table class="table table-hover table-striped table-bordered">
     <thead>
         <tr>
             <th>Day</th>
@@ -12,29 +12,29 @@
         </tr>
     </thead>
     <tbody>
-        <%= for procurements <- @procurements do %>
+        <%= for purchases <- @purchases do %>
             <tr>
                 <td>
-                    <%= procurements.day %>
+                    <%= purchases.day %>
                 </td>
                 <td>
-                    <%= procurements.vendor_name %>
+                    <%= purchases.vendor_name %>
                 </td>
                 <td>
-                    <%= procurements.unit %>
+                    <%= purchases.unit %>
                 </td>
                 <td>
-                    <%= procurements.quantity %>
+                    <%= purchases.quantity %>
                 </td>
 
                 <td>
-                    <span><%= link "Show", to: Routes.procurements_path(@conn, :show, procurements) %></span>
-                    <span><%= link "Edit", to: Routes.procurements_path(@conn, :edit, procurements) %></span>
-                    <span><%= link "Delete", to: Routes.procurements_path(@conn, :delete, procurements), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                    <span><%= link "Show", to: Routes.purchases_path(@conn, :show, purchases) %></span>
+                    <span><%= link "Edit", to: Routes.purchases_path(@conn, :edit, purchases) %></span>
+                    <span><%= link "Delete", to: Routes.purchases_path(@conn, :delete, purchases), method: :delete, data: [confirm: "Are you sure?"] %></span>
                 </td>
             </tr>
             <% end %>
     </tbody>
 </table>
 
-<span><%= link "New Procurements", to: Routes.procurements_path(@conn, :new) %></span>
+<span><%= link "New purchases", to: Routes.purchases_path(@conn, :new) %></span>
